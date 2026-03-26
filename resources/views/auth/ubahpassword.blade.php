@@ -1,5 +1,5 @@
 <x-auth-layout>
-    <x-slot name="title">Reset Password - BERKEMAH Your Fashion Partner</x-slot>
+    <x-slot name="title">Reset Password - Mahyaapps Your Fashion Partner</x-slot>
 
     <div x-data="{ loading: false }" class="space-y-6">
         <div class="text-center space-y-2">

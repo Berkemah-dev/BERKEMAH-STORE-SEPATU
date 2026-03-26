@@ -1,5 +1,5 @@
 <x-auth-layout>
-    <x-slot name="title">Lupa Password - BERKEMAH</x-slot>
+    <x-slot name="title">Lupa Password - Mahyaapps</x-slot>
 
     <div x-data="{ loading: false }" class="space-y-6">
         <div class="text-center space-y-2">

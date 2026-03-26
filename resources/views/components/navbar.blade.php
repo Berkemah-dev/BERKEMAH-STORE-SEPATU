@@ -32,10 +32,9 @@
                 <a href="{{ route('front.index') }}" class="group flex items-center space-x-2">
                     <span class="font-bold text-3xl text-gray-900 transform transition-transform group-hover:scale-105">
                         <img
-                        src="{{ asset('assets/images/logos/logo.png') }}"
-                        alt="Logo"
-                        style="width: 70px"
-                    />
+                            src="{{ asset('assets/images/logos/logo.png') }}"
+                            alt="Logo"
+                            class="w-40" />
                     </span>
                 </a>
 
@@ -120,7 +119,7 @@
                                     :class="{'rotate-180': open}"
                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                        d="M19 9l-7 7-7-7"/>
+                                        d="M19 9l-7 7-7-7" />
                                 </svg>
                             </div>
                         </button>
@@ -223,7 +222,7 @@
                         class="flex items-center gap-3 px-4 py-3 text-sm rounded-xl transition-all duration-300 {{ request()->routeIs('front.category') ? 'text-blue-600 bg-blue-50 font-medium' : 'text-gray-700 hover:bg-gray-50' }}">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                            d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                                d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                         </svg>
                         <span>Kategori</span>
                     </a>
@@ -370,9 +369,11 @@
             opacity: 0;
             transform: translateY(-8px) scale(0.95);
         }
+
         70% {
             transform: translateY(2px) scale(1.01);
         }
+
         100% {
             opacity: 1;
             transform: translateY(0) scale(1);
@@ -384,6 +385,7 @@
             opacity: 1;
             transform: translateY(0) scale(1);
         }
+
         100% {
             opacity: 0;
             transform: translateY(-8px) scale(0.95);

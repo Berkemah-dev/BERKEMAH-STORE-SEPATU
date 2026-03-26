@@ -1,9 +1,9 @@
 <x-auth-layout>
-    <x-slot name="title">Daftar - BERKEMAH Your Fashion Partner</x-slot>
+    <x-slot name="title">Daftar - Mahyaapps Your Fashion Partner</x-slot>
 
     <div x-data="{ loading: false }" class="space-y-6">
         <div class="text-center space-y-2">
-            <h2 class="text-2xl font-bold text-gray-800">Bergabung dengan BERKEMAH</h2>
+            <h2 class="text-2xl font-bold text-gray-800">Bergabung dengan Mahyaapps</h2>
             <p class="text-gray-600">Mulai perjalanan fashionmu bersama kami</p>
         </div>
 

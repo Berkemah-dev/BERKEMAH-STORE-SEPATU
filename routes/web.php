@@ -16,6 +16,10 @@ Route::middleware('guest')->group(function () {
         Route::post('/register', [AuthController::class, 'register']);
         Route::post('/forget', [AuthController::class, 'forgetPassword'])->name('forget');
         Route::post('/reset', [AuthController::class, 'resetPassword'])->name('reset');
+
+        // 🔥 TAMBAH INI
+        Route::get('/password-change', [AuthController::class, 'showChangePassword'])->name('password.change');
+        Route::post('/password-change', [AuthController::class, 'changePassword'])->name('password.update');
     });
     Route::get('/forget', [AuthController::class, 'showForgetPassword'])->name('password.request');
     Route::get('/reset', [AuthController::class, 'showResetPassword'])->name('password.reset');

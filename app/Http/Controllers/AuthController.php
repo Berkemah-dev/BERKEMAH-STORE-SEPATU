@@ -20,7 +20,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $validatedData = $request->validate([
-            'email' => 'required|string|email:rfc,dns',
+            'email' => 'required|string',
             'password' => 'required',
         ], [
             'email.required' => 'Email wajib diisi!',
@@ -30,7 +30,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($validatedData, $request->remember)) {
             $request->session()->regenerate();
-            
+
             $user = Auth::user();
             return redirect()->intended('/')
                 ->with('success', "Selamat datang kembali, {$user->name}! 👋");
@@ -50,7 +50,7 @@ class AuthController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email:rfc,dns|max:255|unique:users',
+            'email' => 'required|string|max:255|unique:users',
             'password' => 'required|string|min:8',
             'password2' => 'required|string|min:8|same:password',
         ], [
@@ -77,7 +77,7 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $name = Auth::user()->name;
-        
+
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
@@ -95,7 +95,7 @@ class AuthController extends Controller
     public function forgetPassword(Request $request)
     {
         $request->validate([
-            'email' => 'required|string|email:rfc,dns'
+            'email' => 'required|string'
         ], [
             'email.required' => 'Email wajib diisi!',
             'email.email' => 'Format email tidak valid!'
@@ -147,8 +147,8 @@ class AuthController extends Controller
         );
 
         return $status === Password::PASSWORD_RESET
-        ? redirect()->route('auth.login')->with('status', __($status))
-        : back()->withErrors(['email' => [__($status)]]);
+            ? redirect()->route('auth.login')->with('status', __($status))
+            : back()->withErrors(['email' => [__($status)]]);
     }
 
     public function showEditProfile()
@@ -179,4 +179,34 @@ class AuthController extends Controller
         User::where('id', Auth::user()->id)->update($validatedData);
         return redirect()->route('auth.profile')->with('success', 'Profile berhasil diubah');
     }
+    public function showChangePassword()
+    {
+        return view('auth.gantipassword');
+    }
+
+    public function changePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|min:8',
+            'confirm_password' => 'required|same:new_password'
+        ], [
+            'current_password.required' => 'Password lama wajib diisi!',
+            'new_password.required' => 'Password baru wajib diisi!',
+            'new_password.min' => 'Minimal 8 karakter!',
+            'confirm_password.same' => 'Konfirmasi password tidak cocok!'
+        ]);
+
+        // cek password lama
+        if (!Hash::check($request->current_password, Auth::user()->password)) {
+            return back()->with('error', 'Password lama salah!');
+        }
+
+        // update password
+        User::where('id', Auth::id())->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return back()->with('success', 'Password berhasil diganti 🔥');
+    }   
 }

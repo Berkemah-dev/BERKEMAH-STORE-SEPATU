@@ -1,9 +1,20 @@
 <x-auth-layout>
-    <x-slot name="title">LOGIN-BERKEMAH</x-slot>
+    <x-slot name="title">LOGIN-Mahyaapps</x-slot>
 
     <div x-data="{ loading: false }" class="space-y-6">
+
+        <!-- LOGO -->
+        <div class="flex justify-center">
+            <img 
+                src="{{ asset('assets/images/logos/logo.png') }}" 
+                alt="MahyaApps Logo"
+                class="w-40 h-auto"
+            />
+        </div>
+
+        <!-- HEADER -->
         <div class="text-center space-y-2">
-            <h2 class="text-2xl font-bold text-gray-800">Selamat Datang di BERKEMAH</h2>
+            <h2 class="text-2xl font-bold text-gray-800">Selamat Datang di Mahyaapps</h2>
             <p class="text-gray-600">Temukan gaya fashion terbaikmu bersama kami</p>
         </div>
 
